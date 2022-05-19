@@ -6,10 +6,8 @@ import {
     DetalsProps,
     HomeProps, NavigationType, RootStackParamList,
     RootTabParamList,
-    UsersProps
 } from './src/navigation/types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const useAppNavigation = () => useNavigation<NavigationType>()
 
