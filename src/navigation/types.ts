@@ -3,12 +3,7 @@ import {NavigationProp, NavigatorScreenParams} from '@react-navigation/native'
 export type RootTabParamList = {
     Home: undefined;
     Users: NavigatorScreenParams<RootStackParamList>;
-    Detals: {
-        id: number,
-        name: string,
-        age: number,
-        friends: string[]
-    };
+    Detals: undefined
 };
 
 export type RootStackParamList = {

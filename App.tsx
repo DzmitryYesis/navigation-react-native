@@ -35,7 +35,7 @@ const DetalsScreen = ({route, navigation,}: DetalsProps) => {
     )
 }
 
-const Stack = createNativeStackNavigator<RootStackParamList>()
+
 
 const Stack1 = () => {
     const navigation = useAppNavigation()
@@ -43,7 +43,7 @@ const Stack1 = () => {
         <View style={{flex: 1}}>
             <Text>Stack1</Text>
             <Button title={'Jump to HomeScreen'} onPress={() => {
-                navigation.navigate('Users', {screem:'Stack3'})
+                navigation.navigate('Users', {screen: 'Stack2'})
             }}/>
         </View>
     )
@@ -72,7 +72,7 @@ const Stack3 = () => {
 }
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
-
+const Stack = createNativeStackNavigator<RootStackParamList>()
 //const Stack = createDrawerNavigator<RootStackParamList>();
 
 const RootStackNavigation = () => {
@@ -86,7 +86,6 @@ const RootStackNavigation = () => {
 export default function App() {
     return (
         <NavigationContainer>
-            <StatusBar style="auto"/>
             <Tab.Navigator initialRouteName={'Home'}>
                 <Tab.Screen name={'Home'} component={HomeScreen}/>
                 <Tab.Screen name={'Users'} component={RootStackNavigation}/>
