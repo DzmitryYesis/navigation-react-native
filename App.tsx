@@ -1,49 +1,47 @@
-import {StatusBar} from 'expo-status-bar';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
-    DetalsProps,
-    HomeProps, NavigationType, RootStackParamList,
+    NavigationType, RootStackParamList,
     RootTabParamList,
 } from './src/navigation/types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const useAppNavigation = () => useNavigation<NavigationType>()
 
-const HomeScreen = ({route, navigation}: HomeProps) => {
+const HomeScreen = () => {
+    const navigation = useAppNavigation()
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text>Home Screen</Text>
             <Button title={'Jump to UsersScreen'} onPress={() => {
-                navigation.navigate('Users', {screen:'Stack2'})
+                navigation.navigate('Users', {screen: 'Stack2'})
             }}/>
         </View>
     );
 }
 
 
-const DetalsScreen = ({route, navigation,}: DetalsProps) => {
-    const param = route.params
+const DetalsScreen = () => {
+    const navigation = useAppNavigation()
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>{JSON.stringify(param, null, 2)}</Text>
-            <Button title={'Jump to HomeScreen'} onPress={() => {
-                navigation.navigate('Home')
+            <Text>Detals Screen</Text>
+            <Button title={'Jump to UsersScreen'} onPress={() => {
+                navigation.navigate('Users', {screen: 'Stack1'})
             }}/>
         </View>
     )
 }
 
 
-
 const Stack1 = () => {
     const navigation = useAppNavigation()
     return (
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text>Stack1</Text>
-            <Button title={'Jump to HomeScreen'} onPress={() => {
-                navigation.navigate('Users', {screen: 'Stack2'})
+            <Button title={'Jump to Home Screen'} onPress={() => {
+                navigation.navigate('Home')
             }}/>
         </View>
     )
@@ -51,10 +49,10 @@ const Stack1 = () => {
 const Stack2 = () => {
     const navigation = useAppNavigation()
     return (
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text>Stack2</Text>
-            <Button title={'Jump to stack 1'} onPress={() => {
-                navigation.navigate('Users', {screen:'Stack1'})
+            <Button title={'Jump Stack3'} onPress={() => {
+                navigation.navigate('Users', {screen: 'Stack3'})
             }}/>
         </View>
     )
@@ -62,7 +60,7 @@ const Stack2 = () => {
 const Stack3 = () => {
     const navigation = useAppNavigation()
     return (
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text>Stack3</Text>
             <Button title={'Jump to detals'} onPress={() => {
                 navigation.navigate('Detals')
@@ -73,7 +71,6 @@ const Stack3 = () => {
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>()
-//const Stack = createDrawerNavigator<RootStackParamList>();
 
 const RootStackNavigation = () => {
     return <Stack.Navigator>
